@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link href="{% static 'assets/css/header.css' %}" rel="stylesheet">
+
+<main>
+{% for meme in memes %}
+
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <a href="/{{ meme.id }}/"><h2 class="display-5">{{ meme.title }}</h2> </a>
+        <p class="lead">What do you mean by {{ meme.prompt }}, honey?</p>
+      </div>
+      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+        {{ meme.pantone }}
+      </div>
+      <div class="my-3 p-3">
+        <p class="display-10">Added on {{ meme.add_date }} by {{ meme.add_by }} </p>
+      </div>
+
+    </div>
+
+{% endfor %}
+</main>
+
+
+  {% endblock %}
