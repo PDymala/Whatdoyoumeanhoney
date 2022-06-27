@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+
+
+
+
+<div class="container py-5">
+
+  {% if user.is_authenticated %}
+            
+  
+  
+
+<h1> Submit a new prompt</h1>
+   
+
+        {% if subbmitted %}
+        Thank you for submitting your meme. It waits for authorization from our admins.
+            {% comment %} <div class="alert alert-success" role="alert">
+             
+            </div> {% endcomment %}
+        {% else %}
+
+            <form action="" method=POST>
+              {% csrf_token %}
+                {{ form|crispy}}
+              <input type="submit" value="Submit" class="btn btn-secondary">
+            
+            
+              </form>
+        {% endif %}
+
+  {% else %}
+  
+  
+        <p> You must be logged in to submit a prompt</p>
+
+        
+  
+  {% endif %}
+  
+  
+
+
+
+</center>
+  {% endblock %}

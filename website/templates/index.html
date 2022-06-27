@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+
+
+
+
+
 {% block content %}
 
 {% load static %}
@@ -11,11 +16,12 @@
     <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 p-3">
         <a href="/{{ meme.id }}/"><h2 class="display-5">{{ meme.title }}</h2> </a>
-        <p class="lead">What do you mean by {{ meme.prompt }}, honey?</p>
+        <p class="lead">What do you mean by <i> {{ meme.prompt }}</i>, honey?</p>
       </div>
-      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-        {{ meme.pantone }}
+      <div class="shadow-sm mx-auto" style="background-color:{{ meme.pantone }}; width: 80%; height: 150px; border-radius: 21px 21px 21px 21px;">
+      
       </div>
+      
       <div class="my-3 p-3">
         <p class="display-10">Added on {{ meme.add_date }} by {{ meme.add_by }} </p>
       </div>
@@ -23,6 +29,32 @@
     </div>
 
 {% endfor %}
+
+<center>
+{% if memes.has_previous %}
+    
+    <a href ="?page={{memes.previous_page_number}}"> <button type="button" class="btn btn-warning">PREVIOUS</button> </a>
+{% endif %}
+
+{% if memes.has_next %}
+  
+  <a href ="?page={{memes.next_page_number}}"> <button type="button" class="btn btn-warning">NEXT</button> </a>
+   
+
+{% endif %}
+<BR>
+Page  <a href ="?page=1">{{ memes.number }} </a> of <a href="?page={{memes.paginator.num_pages }}"> {{ memes.paginator.num_pages }} </a>
+
+</center>
+
+
+
+
+
+
+
+
+
 </main>
 
 
