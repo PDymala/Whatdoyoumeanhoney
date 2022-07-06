@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3> Your memes</h3>
+   
+    {% if user.is_authenticated %}
+            
+            <ul>
+            {% for meme in memes%}
+                <li>
+
+                <a href="/{{ meme.id }}/">{{ meme.title }} </a> : 
+                    {% if meme.approved  %}
+                        Approved, 
+                    {% else %}
+                        Dissapproved, 
+                    {% endif %}
+                
+                Added on {{ meme.add_date }},
+            
+
+                
+            </li>
+
+
+            {% endfor %}
+            </ul>
+
+
+   {% else %}
+  
+  
+        <p> You must be logged in to view this page</p>
+
+  {% endif %}
+  {% endblock %}

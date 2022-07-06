@@ -5,43 +5,19 @@
 {% load crispy_forms_tags %}
 
 
-<!--Register--> 
-<div class="container py-5">
-	<h1>Login</h1>
+	<h3>Login</h3>
 	<form method="POST">
 		{% csrf_token %}
 		{{ form|crispy }}   
 		           
-		<button class="btn btn-primary" type="submit">Login</button>
+		<button class="btn btn-warning" type="submit">Login</button>
 	</form>
 	<p class="text-center">If you do not have an account, <a href={% url 'signup' %}>register</a> instead.</p>
 
-  <p class="text-center">Forgot password? Reset  <a href= {% url 'password_reset' %}>here</a></p>
-
- 
-</div>
+  {% comment %} <p class="text-center">Forgot password? Reset  <a href= {% url 'password_reset' %}>here</a></p> {% endcomment %}
 
 
 
-{% comment %} 
-<div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-
-<form action="" method=POST class="col-6 mx-auto">
-  {% csrf_token %}
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">User name</label>
-    <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
-   
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" name="password">
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-</div> {% endcomment %}
 
 
   {% endblock %}

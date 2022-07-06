@@ -2,26 +2,27 @@
 
 {% block content %}
 
-<main>
+<h3> You searched for... </h3>
     {% if searched %}
-        <center><h1> Searched for: {{ searched }}</h1></center> 
-   
-                {% for meme in memes %}
+               
+{% for meme in memes %}
 
-                <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="my-3 p-3">
-                    <a href="/{{ meme.id }}/"><h2 class="display-5">{{ meme.title }}</h2> </a>
-                    <p class="lead">What do you mean by {{ meme.prompt }}, honey?</p>
-                </div>
-                <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 150px; border-radius: 21px 21px 0 0;">
-                    {{ meme.pantone }}
-                </div>
-                
-                <div class="my-3 p-3">
-                    <p class="display-10">Added on {{ meme.add_date }} by {{ meme.add_by }} </p>
-                </div>
-
-                </div>
+<div class="bg-dark text-white text-center overflow-hidden">
+  <div class="my-3 p-3">
+    <a href="/{{ meme.id }}/"><h2 class="display-5 text-warning">{{ meme.title }}</h2> </a>
+    <p class="lead">What do you mean by <i> {{ meme.prompt }}</i>, honey?</p>
+  </div>
+  <div class="shadow-sm mx-auto" style="background-color:{{ meme.pantone }}; width: 80%; height: 150px; border-radius: 21px 21px 21px 21px;">
+      <div class="justify-content-center">
+        <h3 class="text-white">
+          {{ meme.pantone }} 
+        </h3>
+      </div>
+  </div>
+  
+  <div class="my-3 p-3">
+    <p class="display-10">Added on {{ meme.add_date }} by {{ meme.add_by }} </p>
+  </div>
 
                 {% endfor %}
 
@@ -34,7 +35,6 @@
     {% endif %}
 
 
-</main>
 
 
   {% endblock %}

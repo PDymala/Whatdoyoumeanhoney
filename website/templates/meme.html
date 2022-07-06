@@ -4,8 +4,8 @@
 
 {% load static %}
 <link href="{% static 'assets/css/header.css' %}" rel="stylesheet">
-<main>
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+
+    <div class="me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 p-3">
         <h2 class="display-5">{{ meme.title }}</h2>
         <p class="lead">What do you mean by {{ meme.prompt }}, honey?</p>
@@ -16,10 +16,15 @@
       <div class="my-3 p-3">
         <p class="display-10">Added on {{ meme.add_date }} by {{ meme.add_by }} </p>
       </div>
-
+      {% if user.is_superuser %}
+      <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit" name="delete" value="{{ meme.id }}" class="btn btn-danger"> delete </button>
+      </form>
+      {% endif %}
     </div>
 
-</main>
+
 
 
   {% endblock %}

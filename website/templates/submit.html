@@ -5,18 +5,11 @@
 {% load crispy_forms_tags %}
 
 
-
-
-
-<div class="container py-5">
-
-  {% if user.is_authenticated %}
             
   
-  
 
-<h1> Submit a new prompt</h1>
-   
+<h3> Submit a new prompt</h3>
+     {% if user.is_authenticated %}
 
         {% if subbmitted %}
         Thank you for submitting your meme. It waits for authorization from our admins.
@@ -28,11 +21,17 @@
             <form action="" method=POST>
               {% csrf_token %}
                 {{ form|crispy}}
-              <input type="submit" value="Submit" class="btn btn-secondary">
+              <input type="submit" value="Submit" class="btn btn-warning">
             
             
               </form>
         {% endif %}
+
+
+        <p class="p-2 text-warning">
+          *Every submitted prompt will be validated by an admin before pushing to GPT-3. Aggressive, vulgar or inappropriate prompts will be dismissed.
+        </p>
+
 
   {% else %}
   
@@ -45,7 +44,4 @@
   
   
 
-
-
-</center>
   {% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3> Meme approval console </h3>
+    {% if user.is_authenticated %}
+            
+            <ul>
+            {% for meme in memes%}
+                <li>{{ meme.id }} | {{ meme.prompt}} ||
+                    
+                    
+                        
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="approved" value="{{ meme.id }}" class="btn btn-success"> Approval </button>
+                            <button type="submit" name="disapproved" value="{{ meme.id }}" class="btn btn-danger"> Disapproval </button>
+                        </form>
+                     
+                </li>
+            {% endfor %}
+            </ul>
+
+
+  {% else %}
+  
+  
+        <p> You must be logged in to view this page</p>
+
+  {% endif %}
+  {% endblock %}
