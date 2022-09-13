@@ -1,4 +1,4 @@
-# International Color News
+# What do you mean by ... honey ?
 Translating plain text into color. A translator of wifes description of color.
 Url: https://wdymbh.diplabs.app/
 
