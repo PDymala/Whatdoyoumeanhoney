@@ -6,7 +6,7 @@ import uti
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
+# secrets deleted
 # EMAIL_USE_TLS = uti.access_secret_version('projects/125510501046/secrets/wdymh_EMAIL_USE_TLS')
 # EMAIL_HOST = uti.access_secret_version('projects/125510501046/secrets/wdymh_EMAIL_HOST')
 # EMAIL_PORT = uti.access_secret_version('projects/125510501046/secrets/wdymh_PORT')
@@ -30,7 +30,7 @@ SECRET_KEY = uti.access_secret_version('projects/125510501046/secrets/wdymh_SECR
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'whatdoyoumeanhoney-vpcuqkwkfq-ew.a.run.app', 'wdymbh.diplabs.app']
 
