@@ -1,26 +1,12 @@
 
 import os
 from pathlib import Path
-import uti
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# secrets deleted
-# EMAIL_USE_TLS = uti.access_secret_version('projects/125510501046/secrets/wdymh_EMAIL_USE_TLS')
-# EMAIL_HOST = uti.access_secret_version('projects/125510501046/secrets/wdymh_EMAIL_HOST')
-# EMAIL_PORT = uti.access_secret_version('projects/125510501046/secrets/wdymh_PORT')
-# EMAIL_HOST_USER = uti.access_secret_version('projects/125510501046/secrets/wdymh_EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = uti.access_secret_version('projects/125510501046/secrets/wdymh_EMAIL_HOST_PASSWORD')
-
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-# EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = uti.access_secret_version('projects/125510501046/secrets/wdymh_SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 
 
@@ -109,29 +95,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'whatdoyoumeanhoney.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+# https://stackoverflow.com/questions/53643254/unicodedecodeerror-utf-8-codec-cant-decode-byte-0xff-in-position-0
 
+
+#temp changed to save some money
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': str(os.environ.get('DB_ENGINE', None)),
+#         'NAME': str(os.environ.get('DB_NAME', None)),
+#         'USER': str(os.environ.get('DB_USER', None)),
+#         'PASSWORD': str(os.environ.get('DB_PASSWORD', None)),
+#         'HOST': str(os.environ.get('DB_HOST', None)),
+#         'PORT': str(os.environ.get('DB_PORT', None))
 #     }
 # }
-
-
-# https://stackoverflow.com/questions/53643254/unicodedecodeerror-utf-8-codec-cant-decode-byte-0xff-in-position-0
 DATABASES = {
     'default': {
-        'ENGINE': uti.access_secret_version('projects/125510501046/secrets/wdymbh_engine'),
-        'NAME': uti.access_secret_version('projects/125510501046/secrets/wdymbh_name'),
-        'USER': uti.access_secret_version('projects/125510501046/secrets/wdymbh_user'),
-        'PASSWORD': uti.access_secret_version('projects/125510501046/secrets/wdymbh_password'),
-        'HOST': uti.access_secret_version('projects/125510501046/secrets/wdymbh_host'),   # Or an IP Address that your DB is hosted on
-        'PORT': uti.access_secret_version('projects/125510501046/secrets/wdymbh_port'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
